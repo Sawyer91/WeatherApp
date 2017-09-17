@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context="com.sawyerd.weatherapp.MainActivity">
+
+    <TextView
+        android:id="@+id/dateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="16dp"
+        android:text="Date"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/tempTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/weatherDTextView"
+        android:layout_below="@+id/dateTextView"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="20dp"
+        android:text="0"
+        android:textColor="@android:color/black"
+        android:textSize="50sp" />
+
+    <TextView
+        android:id="@+id/cityTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tempTextView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
+        android:text="City"
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/weatherDTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/dateTextView"
+        android:layout_below="@+id/tempTextView"
+        android:layout_marginTop="12dp"
+        android:text="WeatherDiscription"
+        android:textColor="@android:color/black" />
+
+    <ImageView
+        android:id="@+id/weatherImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="17dp"
+        app:srcCompat="@drawable/icon_brokenclouds"
+        android:layout_alignTop="@+id/textView9"
+        android:layout_alignEnd="@+id/cityTextView" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tempTextView"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/tempTextView"
+        android:text="C"
+        android:textColor="@android:color/black"
+        android:textSize="30sp" />
+</RelativeLayout>
