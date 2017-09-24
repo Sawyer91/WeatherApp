@@ -1,9 +1,11 @@
 package com.sawyerd.weatherapp;
 
-import android.icu.text.SimpleDateFormat;
-import android.icu.util.Calendar;
+
+import android.location.LocationManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.format.Time;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,12 +20,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
 public class MainActivity extends AppCompatActivity {
     TextView tempTextView;
     TextView cityTextView;
     TextView weatherDTextView;
     TextView dateTextView;
     ImageView weatherImageView;
+    private LocationManager locationManager;
+    String city;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +42,17 @@ public class MainActivity extends AppCompatActivity {
         weatherImageView = (ImageView) findViewById(R.id.weatherImageView);
         //weatherImageView.setImageResource(R.drawable.icon_clearsky);
 
-        dateTextView.setText(getCurrentDate());
+        Time today = new Time(Time.getCurrentTimezone());
+        today.setToNow();
+
+        dateTextView.setText(today.format("%e:%m:%d"));
+
+        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+        city = "Moscow";
 
 
-        String url = "http://api.openweathermap.org/data/2.5/weather?q=Moscow&appid=cd58c6378939f33f0231d9bf186c70c0&units=metric";
+        String url = "http://api.openweathermap.org/data/2.5/weather?q="+ city + "&appid=cd58c6378939f33f0231d9bf186c70c0&units=metric";
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
@@ -83,10 +95,5 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private String getCurrentDate(){
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, MMM dd");
-        String formattedDate = dateFormat.format(calendar.getTime());
-        return formattedDate;
-    }
+
 }
